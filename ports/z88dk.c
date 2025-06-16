@@ -12,7 +12,7 @@
 // zcc +cpm -subtype=montezuma -lm -create-app -DPLATFORM_MAZE=z88dk -DGFXSCALEX=2 -DGFXSCALEY=1 -lgrafyx4 -DUSE_SPRITES c64maze.c ports/z88dk.c
 
 // Commodore 128 (Z80 CPU, FatPixel mode)
-// zcc +c128 -lgfx128hr -lm -create-app -DPLATFORM_MAZE=z88dk -DGFXSCALEX=2 -DGFXSCALEY=1 c64maze.c ports/z88dk.c
+//  zcc +c128 -lgfx128hr -lm -create-app -DPLATFORM_MAZE=z88dk -DGFXSCALEX=9/4 -DGFXSCALEY=1 c64maze.c ports/z88dk.c
 
 
 #include <stdio.h>
@@ -33,6 +33,7 @@
 
 #ifdef __C128__
 #include <c128/cia.h>
+#include <c128/sid.h>
 // 4 bytes: Hrs, Min, Sec, Ten
 unsigned char appTOD[4];
 #endif
@@ -183,7 +184,23 @@ unsigned char port_sound_irq(void)
 
 void port_start_sound(unsigned char *l1, unsigned char *l2, unsigned char *l3)
 {
+
+	#ifdef __C128__
+	volumesid(15,0);
+	
+	//setintctrlcia(cia2,ciaClearIcr); /* disable all cia 2 interrupts */
+	#endif
+
     /* TODO */
+//    ptr1=list1=l1;
+//    ptr2=list2=l2;
+//    ptr3=list3=l3;
+//    cnt=0;
+//
+//    SEI();
+//    set_irq(&port_sound_irq, stackSize, STACK_SIZE);
+//    CLI();
+	
 }
 
 void port_loadVICFont(unsigned char magnification)
@@ -200,8 +217,18 @@ char port_getch(void)
 void port_fflushMazeRegion(void)
 {
 }
-void port_music_on(void){}
-void port_music_off(void){}
+void port_music_on(void){
+	#ifdef __C128__
+	volumesid(0,0);
+	#endif
+}
+
+void port_music_off(void){
+	#ifdef __C128__
+	volumesid(15,0);
+	#endif
+}
+
 void port_font_magnification(unsigned char magnification)
 {
 //    (void)magnification;
