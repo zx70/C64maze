@@ -1,18 +1,18 @@
 
 // ZX 81 (with 32K + WRX mod)
-//  zcc +zx81 -clib=wrx -subtype=_wrx -pragma-define:hrgpage=40000 -create-app -DGFXSCALEX=4/5 -DGFXSCALEY=4/5 -lm -O3 -DPLATFORM_MAZE=z88dk c64maze.c ports/z88dk.c
+//  zcc +zx81 -clib=wrx -subtype=_wrx -pragma-define:hrgpage=40000 -create-app -DSZ=7 -DGFXSCALEX=4/5 -DGFXSCALEY=4/5 -lm -O3 -DPLATFORM_MAZE=z88dk c64maze.c ports/z88dk.c
 
 // ZX Spectrum
-// zcc +zx -lndos -create-app -DGFXSCALEX=4/5 -DGFXSCALEY=4/5 -lm -DPLATFORM_MAZE=z88dk c64maze.c ports/z88dk.c
+// zcc +zx -lndos -create-app -DSZ=7 -DGFXSCALEX=4/5 -DGFXSCALEY=4/5 -lm -DPLATFORM_MAZE=z88dk c64maze.c ports/z88dk.c
 
 // TS 2068 (FatPixel mode)
-// zcc +ts2068 -pragma-define:CLIB_DEFAULT_SCREEN_MODE=0x3e -lm -create-app -DPLATFORM_MAZE=z88dk -DGFXSCALEX=5/6 -DGFXSCALEY=5/6 c64maze.c ports/z88dk.c
+// zcc +ts2068 -pragma-define:CLIB_DEFAULT_SCREEN_MODE=0x3e -lm -create-app -DPLATFORM_MAZE=z88dk -DSZ=7 -DGFXSCALEX=5/6 -DGFXSCALEY=5/6 c64maze.c ports/z88dk.c
 
 // TRS80 Model4 (Montezuma CP/M, Graphyx Solution High Resolution Board)
-// zcc +cpm -subtype=montezuma -lm -create-app -DPLATFORM_MAZE=z88dk -DGFXSCALEX=2 -DGFXSCALEY=1 -lgrafyx4 -DUSE_SPRITES c64maze.c ports/z88dk.c
+// zcc +cpm -subtype=montezuma -lm -create-app -DPLATFORM_MAZE=z88dk -DSZ=8 -DGFXSCALEX=2 -DGFXSCALEY=1 -lgrafyx4 -DUSE_SPRITES c64maze.c ports/z88dk.c
 
 // Commodore 128 (Z80 CPU, FatPixel mode)
-//  zcc +c128 -lgfx128hr -lm -create-app -DPLATFORM_MAZE=z88dk -DGFXSCALEX=9/4 -DGFXSCALEY=1 c64maze.c ports/z88dk.c
+//  zcc +c128 -lgfx128hr -lm -create-app -DPLATFORM_MAZE=z88dk -DSZ=7 -DGFXSCALEX=9/4 -DGFXSCALEY=1 c64maze.c ports/z88dk.c
 
 
 #include <stdio.h>
