@@ -507,7 +507,9 @@ void show_maze()
         for(x=0; x<labyrinthSizeX;++x) {
             if(pt[x]=='*') {
                 //POKE(by,9);
-#define SZ      (8)
+#ifndef SZ
+#define SZ	8
+#endif
                 box(x*SZ,y*SZ, x*SZ+SZ, y*SZ+SZ);
             } else if(positiony==y && positionx==x) {
                 box(x*SZ+2,y*SZ+2,x*SZ+5,y*SZ+5);
